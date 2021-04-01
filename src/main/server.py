@@ -65,19 +65,24 @@ def serverIndex():
 
 if __name__ == '__main__':
     argv = sys.argv[1:]
-    opts, args = getopt.getopt(argv, 'vhp:h:d:')
+    opts, args = getopt.getopt(argv, 'vhp:i:d:')
 
     # parse arguments
     port = 9008
-    host = "127.0.0.1"
+    ip = "127.0.0.1"
     debug = False
+    print(opts)
 
     for opt in opts:
-        if opt[0] == "-h":
-            host = str(opt[1])
+        if opt[0] == "-i":
+            ip = opt[1]
         elif opt[0] == "-p":
             port = int(opt[1])
         elif opt[0] == "-d":
             debug = int(opt[1])
+        
+    print("Running on")
+    print("Host: ",ip)
+    print("Port: ",port)
 
-    app.run(debug=debug,host=host,port=port)
+    app.run(debug=debug,host=ip,port=port)
