@@ -24,11 +24,11 @@ def generate(label,text,fileformat):
 
     fileformats = ["png","jpeg"]
     if fileformat not in fileformats:
-        raise Exception(f"Unknown fileformat {fileformat}")
+        raise Exception("Unknown fileformat ",fileformat)
     
     # validate inputs
     if label not in POSSIBLE_LABELS:
-        raise Exception(f"Label {label} not found! Only given_away, instructed, public, owner_only and documented are possible labels!")
+        raise Exception("Label "+label+" not found! Only given_away, instructed, public, owner_only and documented are possible labels!")
         
     # generate image
     img = buildImage(label,text)
@@ -36,9 +36,9 @@ def generate(label,text,fileformat):
         print("Image is none!")
 
     # return image png
-    retval, buffer = cv2.imencode(f".{fileformat}", img)
+    retval, buffer = cv2.imencode("."+fileformat, img)
     response = flask.make_response(buffer.tostring())
-    response.headers['Content-Type'] = f"image/{fileformat}"
+    response.headers['Content-Type'] = "image/"+fileformat
     return response
 
 @app.route('/<label>/<text>.png', methods=['GET'])

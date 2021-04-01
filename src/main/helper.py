@@ -5,8 +5,8 @@
 import cv2
 
 def printVersions():
-    print(f"LabelGenerator : "+getVersion())
-    print(f"opencv2 version: {cv2.__version__}")
+    print("LabelGenerator : "+getVersion())
+    print("opencv2 version: "+cv2.__version__)
 
 def getVersion():
     return "v0.0.1"

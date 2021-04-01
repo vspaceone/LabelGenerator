@@ -46,7 +46,7 @@ def commandlineInterface():
         raise Exception("\nPlease define a label (-l) \n\nPossible labels: \nowner_only\ninstructed\ndocumented\npublic\ngive_away\n")
 
     if label not in POSSIBLE_LABELS:
-        raise Exception(f"\n{l} is a unknown label \n\nPossible labels: \nowner_only\ninstructed\ndocumented\npublic\ngive_away\n")
+        raise Exception("\n"+l+" is a unknown label \n\nPossible labels: \nowner_only\ninstructed\ndocumented\npublic\ngive_away\n")
         
     if text is None and label != "give_away":
         raise Exception("\nPlease provide text via -t")

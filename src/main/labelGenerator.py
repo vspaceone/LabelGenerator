@@ -19,14 +19,14 @@ def buildImage(label, text, outputfile=None):
 
 
     if label not in POSSIBLE_LABELS:
-        raise Exception(f"Label {label} unknown!")
+        raise Exception("Label "+label+" unknown!")
 
     labelpath = os.path.join("labels",label+".png") 
 
     # read in image
     img = cv2.imread(labelpath)
     if img is None:
-        raise Exception(f"Failed to load label {labelpath}")
+        raise Exception("Failed to load label "+labelpath)
 
     # font settings
     font = cv2.FONT_HERSHEY_SIMPLEX
