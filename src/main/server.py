@@ -68,7 +68,7 @@ if __name__ == '__main__':
     opts, args = getopt.getopt(argv, 'vhp:i:d:')
 
     # parse arguments
-    port = 9008
+    port = 5007
     ip = "127.0.0.1"
     debug = False
     print(opts)
