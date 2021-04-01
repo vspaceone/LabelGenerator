@@ -3,7 +3,8 @@
 # Date:      April 2021
 
 import base64
-
+import getopt
+import sys
 
 import flask
 import cv2
@@ -63,4 +64,20 @@ def serverIndex():
     return resp
 
 if __name__ == '__main__':
-    app.run(debug=False,host="0.0.0.0",port=9008)
+    argv = sys.argv[1:]
+    opts, args = getopt.getopt(argv, 'vhp:h:d:')
+
+    # parse arguments
+    port = 9008
+    host = "127.0.0.1"
+    debug = False
+
+    for opt in opts:
+        if opt[0] == "-h":
+            host = str(opt[1])
+        elif opt[0] == "-p":
+            port = int(opt[1])
+        elif opt[0] == "-d":
+            debug = int(opt[1])
+
+    app.run(debug=debug,host=host,port=port)
