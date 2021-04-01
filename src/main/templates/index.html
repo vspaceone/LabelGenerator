@@ -31,7 +31,7 @@
 <h1>Label Generator {{version}}</h1>
 <div class="card" style="width: 100%;">
   <div class="card-body">
-    <h5 class="card-title">Loading the directory</h5>
+    <h5 class="card-title">API Access</h5>
     <p class="card-text">You can easily generate your own label with your name on it!</p>
     <p class="card-text">To do so just load the following route:
         <pre>
@@ -56,34 +56,33 @@
 
 <div class="card" style="width: 100%;">
   <div class="card-body">
-    <h5 class="card-title">Loading spaceapi</h5>
-    <p class="card-text">To load a space use
-      <pre>
-        GET /label/your_name:
-      </pre>
-    The <code>:label:</code> variable is the urlencoded version of the name in the directory. E.g. <code>%2Fdev%2Ftal</code>.</p>
-    <a href="spaces/%2Fdev%2Ftal" class="btn btn-primary"><b>Example:</b> /spaces/%2Fdev%2Ftal</a>
+    <h5 class="card-title">Interactive Designer</h5>
+    <p class="card-text">
+        <form id="interactive_designed"> 
+            <select id="labelInput">
+                <option value="owner_only">owner_only</option>
+                <option value="instructed">instructed</option>
+                <option value="documented">documented</option>
+                <option value="public">public</option>
+                <option value="give_away">give_away</option>
+            </select>
+            <input id="textInput" type="text" value="your_name">
+            <select id="formatInput">
+                <option value="png">png</option>
+                <option value="jpeg">jpeg</option>
+            </select>
+        </form>
+    </p>
+    <p>
+        <img id="image" src="/owner_only/your_name.png"/>
+    </p>
   </div>
 </div>
-
-<div class="card" style="width: 100%;">
-  <div class="card-body">
-    <h5 class="card-title">Load stats</h5>
-    <p class="card-text">Load
-      <pre>
-        GET /stats/:spacename:.html
-      </pre>
-    to show a stats site.</p>
-    <p><b>Example:</b> <code>stats/%2Fdev%2Ftal.html</code></p>
-    <a href="stats/%2Fdev%2Ftal.html" class="btn btn-primary"><b>Example:</b> stats/%2Fdev%2Ftal.html</a>
-  </div>
-</div>
-
 
 <div class="card" style="width: 100%;">
   <div class="card-body">
     <h5 class="card-title">Contribute?</h5>
-    <p class="card-text">Make PullRequests to <a href="https://github.com/vspaceone/DirectoryMirrorServer">https://github.com/vspaceone/DirectoryMirrorServer</a>.</p>
+    <p class="card-text">Make PullRequests to <a href="https://github.com/vspaceone/LabelGenerator">https://github.com/vspaceone/LabelGenerator</a>.</p>
 
   </div>
 </div>
@@ -112,6 +111,28 @@
 
   </div>
 </div>
+
+<script>
+    labelInput = document.getElementById("labelInput")
+    textInput = document.getElementById("textInput")
+    formatInput = document.getElementById("formatInput")
+    image = document.getElementById("image")
+
+    labelInput.addEventListener('change', updateImage);
+    textInput.addEventListener('change', updateImage);
+    formatInput.addEventListener('change', updateImage);
+
+    updateImage()
+
+    /* function */
+    function updateImage(){
+        l = labelInput.value
+        t = textInput.value
+        f = formatInput.value
+        
+        image.src = l+"/"+t+"."+f
+    }
+</script>
 
 </body>
 </html>

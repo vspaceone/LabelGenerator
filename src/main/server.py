@@ -12,7 +12,7 @@ import cv2
 from labelGenerator import buildImage
 from labelGenerator import POSSIBLE_LABELS
 
-from helper import printVersions
+from helper import getVersion
 
 
 app = flask.Flask(__name__)
@@ -36,7 +36,6 @@ def generate(label,text,fileformat):
 
     # return image png
     retval, buffer = cv2.imencode(f".{fileformat}", img)
-    print(retval)
     response = flask.make_response(buffer.tostring())
     response.headers['Content-Type'] = f"image/{fileformat}"
     return response
@@ -45,14 +44,23 @@ def generate(label,text,fileformat):
 def serverPNG(label,text):
     return generate(label,text,"png")
 
+@app.route('/<label>/.png', methods=['GET'])
+def serverPNGEmpty(label):
+    return generate(label,"","png")
+
 @app.route('/<label>/<text>.jpeg', methods=['GET'])
 def serverJPEG(label,text):
     return generate(label,text,"jpeg")
 
+@app.route('/<label>/.jpeg', methods=['GET'])
+def serverJPEGEmpty(label):
+    return generate(label,"","jpeg")
 
 @app.route('/', methods=['GET'])
 def serverIndex():
-    return app.send_static_file('index.html')
+    resp = flask.make_response(flask.render_template('index.html', version=getVersion()), 200)
+    resp.headers["Content-type"] = "text/html; charset=utf-8"
+    return resp
 
 if __name__ == '__main__':
     app.run(debug=True)
