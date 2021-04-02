@@ -9,7 +9,6 @@ import sys
 import flask
 import cv2
 
-
 from labelGenerator import buildImage
 from labelGenerator import POSSIBLE_LABELS
 
@@ -19,8 +18,6 @@ from helper import getVersion
 app = flask.Flask(__name__)
 
 def generate(label,text,fileformat):
-    label = flask.escape(label)
-    text = flask.escape(text)
 
     fileformats = ["png","jpeg"]
     if fileformat not in fileformats:
