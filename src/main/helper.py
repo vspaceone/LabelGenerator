@@ -9,7 +9,7 @@ def printVersions():
     print("opencv2 version: "+cv2.__version__)
 
 def getVersion():
-    return "v0.0.1"
+    return "v0.0.2"
 
 if __name__ == "__main__":
     print("""Please run the commandline interface (cmtInterface.py) as __main__ 
