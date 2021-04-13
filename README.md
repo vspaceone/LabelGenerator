@@ -27,7 +27,7 @@ The default port is `5007`, the default host ip is `0.0.0.0`. Both can be overwr
 
 ## Run as Docker Container
 ```
-docker build - labelgenerator .
+docker build -t labelgenerator .
 docker run -d -p 5007:5007 labelgenerator
 ```
 
