@@ -21,6 +21,13 @@ The more common use case is to run the Label Generator as a Webapplication. Ther
 source .venv/bin/activate
 python server.py -p <port> -i <hostip> -d <debug>
 ```
-The default port is `5007`, the default host ip is `127.0.0.1`. Both can be overwritten via opts. The debug flag is either 1 or 0. 
+The default port is `5007`, the default host ip is `0.0.0.0`. Both can be overwritten via opts. The debug flag is either 1 or 0. 
 
 **TODO**: Alternative opts are `-h` for help and `-v` for version.
+
+## Run as Docker Container
+```
+docker build - labelgenerator .
+docker run -d -p 5007:5007 labelgenerator
+```
+

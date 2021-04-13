@@ -66,7 +66,7 @@ if __name__ == '__main__':
 
     # parse arguments
     port = 5007
-    ip = "127.0.0.1"
+    ip = "0.0.0.0"
     debug = False
     print(opts)
 
