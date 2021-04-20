@@ -1,4 +1,5 @@
 # vspace.one e.V. LabelGenerator
+The LabelGenerator is a simple webapp, build with Flask. It serves png and jpeg image of our labels with dynamic strings on it. You can choose any name/string just via the path to the image. Find a running instance here: labelgenerator.vspace.one. 
 
 ## Install locally
 ```
