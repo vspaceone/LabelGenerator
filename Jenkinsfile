@@ -6,6 +6,7 @@ pipeline {
         DOCKER_CREDENTIALS = 'system-nexus-deploy'
         DOCKER_IMAGE = 'docker.vspace.one/labelgenerator'
 
+        RELEASE_STAGE_WEBHOOK = credentials('vspaceone-webhook-labelgenerator-release')
         MASTER_STAGE_WEBHOOK = credentials('vspaceone-webhook-labelgenerator')
         BETA_STAGE_WEBHOOK = credentials('vspaceone-webhook-labelgenerator-dev')
     }
@@ -50,6 +51,14 @@ pipeline {
                         dockerImage.push("develop")
                     }
                 }
+            }
+        }
+        stage('Send release webhooks') {
+            when {
+                when { buildingTag() }
+            }
+            steps {
+                sh "curl $RELEASE_STAGE_WEBHOOK"
             }
         }
         stage('Send master webhooks') {
