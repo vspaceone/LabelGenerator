@@ -71,7 +71,7 @@ def serverIndex():
     resp.headers["Content-type"] = "text/html; charset=utf-8"
     return resp
 
-if __name__ == '__main__':
+def startServer():
     argv = sys.argv[1:]
     opts, args = getopt.getopt(argv, 'vhp:i:d:')
 
@@ -79,7 +79,6 @@ if __name__ == '__main__':
     port = 5007
     ip = "0.0.0.0"
     debug = False
-    print(opts)
 
     for opt in opts:
         if opt[0] == "-i":
@@ -88,9 +87,12 @@ if __name__ == '__main__':
             port = int(opt[1])
         elif opt[0] == "-d":
             debug = int(opt[1])
-        
+
     print("Running on")
     print("Host: ",ip)
     print("Port: ",port)
 
     app.run(debug=debug,host=ip,port=port)
+
+if __name__ == '__main__':
+    startServer()
