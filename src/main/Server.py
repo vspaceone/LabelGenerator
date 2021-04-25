@@ -23,8 +23,6 @@ cache = Cache(config={
 
 cache.init_app(app)
 
-
-
 def generate(label,text,fileformat):
     lg = LabelGenerator()
     fileformats = ["png","jpeg"]
@@ -38,7 +36,7 @@ def generate(label,text,fileformat):
     # generate image
     img = lg.buildImage(label,text)
     if img is None:
-        print("Image is none!")
+        raise Exception("Image is none!")
 
     # return image png
     retval, buffer = cv2.imencode("."+fileformat, img)

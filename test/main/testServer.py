@@ -13,13 +13,13 @@ class TestServer(unittest.TestCase):
 	"""
 
 
-	def test_basic(self):
-		"""
-		Test if commandlineInterface works without exception
-		:return: void
-		"""
-		pass
+	def test_generateWrongLabelType(self):
+		with self.assertRaises(Exception):
+			generate("beef", "Text", fileformat="png")
 
+	def test_generateWrongFormat(self):
+		with self.assertRaises(Exception):
+			generate("give_away", "Text", fileformat="jpg")
 
 if __name__ == '__main__':
 	unittest.main()
