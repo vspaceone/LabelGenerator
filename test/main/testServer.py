@@ -4,26 +4,21 @@
 
 import unittest
 
-from src.main.CMDInterface import *
+from src.main.Server import *
 
 
-class TestCMDInterface(unittest.TestCase):
+class TestServer(unittest.TestCase):
 	"""
-	TestHelper: Test class for Helper file
+	TestServer: Test class for the flask server
 	"""
 
 
-	def test_commandlineInterface(self):
+	def test_basic(self):
 		"""
 		Test if commandlineInterface works without exception
 		:return: void
 		"""
-		commandlineInterface()
-
-
-
-
-
+		pass
 
 
 if __name__ == '__main__':
