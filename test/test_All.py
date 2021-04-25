@@ -4,7 +4,11 @@
 
 import unittest
 
-from main import *
+from test.main.testLabelGenerator import *
+from test.main.testHelper import *
+from test.main.testCMDInterface import *
+from test.main.testServer import *
+
 
 class TestAll(unittest.TestCase):
 	pass
