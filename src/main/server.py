@@ -7,6 +7,7 @@ import getopt
 import sys
 
 import flask
+from flask_caching import Cache
 import cv2
 
 from labelGenerator import buildImage
@@ -15,7 +16,19 @@ from labelGenerator import POSSIBLE_LABELS
 from helper import getVersion
 
 
+
+
 app = flask.Flask(__name__)
+cache = Cache(config={
+    'CACHE_TYPE': 'FileSystemCache',
+    'CACHE_DEFAULT_TIMEOUT': 60*60*24*3, # cache for 3 days
+    'CACHE_THRESHOLD': 500, # cache max. 500 items
+    'CACHE_DIR': 'cache'
+})
+
+cache.init_app(app)
+
+
 
 def generate(label,text,fileformat):
 
@@ -39,18 +52,23 @@ def generate(label,text,fileformat):
     return response
 
 @app.route('/<label>/<text>.png', methods=['GET'])
+@cache.cached()
 def serverPNG(label,text):
+    print("Regenerate!")
     return generate(label,text,"png")
 
 @app.route('/<label>/.png', methods=['GET'])
+@cache.cached()
 def serverPNGEmpty(label):
     return generate(label,"","png")
 
 @app.route('/<label>/<text>.jpeg', methods=['GET'])
+@cache.cached()
 def serverJPEG(label,text):
     return generate(label,text,"jpeg")
 
 @app.route('/<label>/.jpeg', methods=['GET'])
+@cache.cached()
 def serverJPEGEmpty(label):
     return generate(label,"","jpeg")
 
