@@ -2,7 +2,7 @@
 # Author:    Maximilian Noppel
 # Date:      April 2021
 
-import base64
+
 import getopt
 import sys
 
@@ -10,13 +10,8 @@ import flask
 from flask_caching import Cache
 import cv2
 
-from labelGenerator import buildImage
-from labelGenerator import POSSIBLE_LABELS
-
-from helper import getVersion
-
-
-
+from src.main.LabelGenerator import LabelGenerator
+from src.main.Helper import getVersion
 
 app = flask.Flask(__name__)
 cache = Cache(config={
@@ -31,17 +26,17 @@ cache.init_app(app)
 
 
 def generate(label,text,fileformat):
-
+    lg = LabelGenerator()
     fileformats = ["png","jpeg"]
     if fileformat not in fileformats:
         raise Exception("Unknown fileformat ",fileformat)
     
     # validate inputs
-    if label not in POSSIBLE_LABELS:
+    if label not in lg.POSSIBLE_LABELS:
         raise Exception("Label "+label+" not found! Only given_away, instructed, public, owner_only and documented are possible labels!")
         
     # generate image
-    img = buildImage(label,text)
+    img = lg.buildImage(label,text)
     if img is None:
         print("Image is none!")
 
