@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
         dockerImage = ''
+        DOCKER_REGISTRY = 'https://docker.vspace.one'
         DOCKER_CREDENTIALS = 'system-nexus-deploy'
         DOCKER_IMAGE = 'docker.vspace.one/labelgenerator'
 
@@ -20,7 +21,7 @@ pipeline {
             when { buildingTag() }
             steps {
                 script {
-                    docker.withRegistry( 'https://docker.vspace.one', DOCKER_CREDENTIALS ) {
+                    docker.withRegistry( DOCKER_REGISTRY, DOCKER_CREDENTIALS ) {
                         dockerImage.push("$TAG_NAME")
                         dockerImage.push("latest")
                     }                    
@@ -33,7 +34,7 @@ pipeline {
             }
             steps {
                 script {
-                    docker.withRegistry( 'https://docker.vspace.one', DOCKER_CREDENTIALS ) {
+                    docker.withRegistry( DOCKER_REGISTRY, DOCKER_CREDENTIALS ) {
                         dockerImage.push("master")
                     }                    
                 }
@@ -45,7 +46,7 @@ pipeline {
             }
             steps {
                 script {
-                    docker.withRegistry( 'https://docker.vspace.one', DOCKER_CREDENTIALS ) {
+                    docker.withRegistry( DOCKER_REGISTRY, DOCKER_CREDENTIALS ) {
                         dockerImage.push("develop")
                     }
                 }
