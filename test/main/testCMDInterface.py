@@ -3,6 +3,8 @@
 
 
 import unittest
+import argparse
+import sys
 
 from src.main.CMDInterface import *
 
@@ -18,9 +20,42 @@ class TestCMDInterface(unittest.TestCase):
 		Test if commandlineInterface works without exception
 		:return: void
 		"""
-		# TODO implement this test
-		pass
-		#commandlineInterface()
+		sys.argv = ["prog", "-l", "give_away", "-t","Test"]
+		commandlineInterface()
+
+	def test_commandlineInterfaceDifferentOrder(self):
+		"""
+		Test if commandlineInterface works without exception
+		:return: void
+		"""
+		sys.argv = ["prog", "-t","Test", "-l", "give_away"]
+		commandlineInterface()
+
+	def test_commandlineInterfaceWithoutLabel(self):
+		"""
+		Test if commandlineInterface throws exception if no label is provided
+		:return: void
+		"""
+		sys.argv = ["prog", "-t","Test"]
+		with self.assertRaises(Exception):
+			commandlineInterface()
+
+	def test_commandlineInterfaceWithoutText(self):
+		"""
+		Test if commandlineInterface works if no text is provided
+		:return: void
+		"""
+		sys.argv = ["prog", "-l", "public"]
+		commandlineInterface()
+
+	def test_commandlineInterfaceWithoutUnknownLabel(self):
+		"""
+		Test if commandlineInterface throws exception if label is unknown
+		:return: void
+		"""
+		sys.argv = ["prog", "-l", "beef"]
+		with self.assertRaises(Exception):
+			commandlineInterface()
 
 
 

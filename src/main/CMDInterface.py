@@ -32,8 +32,8 @@ def commandlineInterface():
         elif opt[0] == "-h":
             print("""This is a tool to generate vspace.one e.V. labels with the names of the owners on them.
                 \nPlease use the following options:
-                -t: Text to print on the label
-                -o: Outputfile for the generated image
+                -t: Text to print on the label (optional)
+                -o: Outputfile for the generated image (optional)
                 -l: Label: owner_only, instructed, documented, public, give_away
                 -h: Help
                 -v: Print version
@@ -47,8 +47,8 @@ def commandlineInterface():
     if label not in lg.POSSIBLE_LABELS:
         raise Exception("\n"+l+" is a unknown label \n\nPossible labels: \nowner_only\ninstructed\ndocumented\npublic\ngive_away\n")
         
-    if text is None and label != "give_away":
-        raise Exception("\nPlease provide text via -t")
+    if text is None:
+        text = ""
 
     # call actual functionality
     lg.buildImage(label,text,outputfile)
