@@ -12,14 +12,24 @@ GET http(s)://example.org/<labelname>/<your_name>.jpeg
 ```
 to receive the requested label as image.
 
-## Install locally
+## Install
+In the following is describe how to install and run the LabelGenerator.
+
+You got the following options:
+
+ + run as native Flask server
+ + run via commandline locally
+ + run as Docker Container
+
+
+### Install locally
 ```
 python -m venv .venv
 source .venv/bin/activate
-pip install opencv-python flask
+pip install opencv-python flask Flask-Caching
 ```
 
-### Run the commandline tool
+#### Run the commandline tool
 The Label Generator can be run as commandline tool. Execute:
 ```
 source .venv/bin/activate
@@ -27,7 +37,7 @@ python cmdInterface.py -o <outputfile> -t <text> -l <label>
 ```
 Alternative opts are `-h` for help and `-v` for version.
 
-### Run the server
+#### Run the server
 The more common use case is to run the Label Generator as a Webapplication. There for run the following:
 ```
 source .venv/bin/activate
@@ -37,10 +47,15 @@ The default port is `5007`, the default host ip is `0.0.0.0`. Both can be overwr
 
 **TODO**: Alternative opts are `-h` for help and `-v` for version.
 
-## Install as Docker Container
+### Install as Docker Container
 Beside running LabelGenerator locally you can deploy it as Docker Container. Therefore run the following:
 ```
 docker build -t labelgenerator .
 docker run -d -p 5007:5007 labelgenerator
 ```
 
+## Contribute
+We use [gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) for the development. So please use the branch names `develop`, `featureX`, ... and use PullRequests for your contributions. 
+
+## Licence
+Please find the licence here [licence](LICENCE.md).
