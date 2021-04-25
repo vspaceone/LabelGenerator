@@ -12,5 +12,5 @@ def getVersion():
     return "v0.0.2"
 
 if __name__ == "__main__":
-    print("""Please run the commandline interface (cmtInterface.py) as __main__ 
-    or the server.py file as Flask application. This file is just a source file!""")
+    print("""Please run the commandline interface (testCMDInterface.py) as __main__ 
+    or the Server.py file as Flask application. This file is just a source file!""")
