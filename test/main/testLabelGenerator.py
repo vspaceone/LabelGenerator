@@ -13,7 +13,7 @@ class TestLabelGenerator(unittest.TestCase):
 	"""
 
 
-	def test_buildImageNormal(self):
+	def test_buildImage_Normal(self):
 		"""
 		Test if buildImage works when called normally
 		:return: void
@@ -21,7 +21,7 @@ class TestLabelGenerator(unittest.TestCase):
 		lg = LabelGenerator()
 		lg.buildImage("give_away", "Text", outputfile=None)
 
-	def test_buildImageGiveAwayWithEmptyText(self):
+	def test_buildImage_GiveAwayWithEmptyText(self):
 		"""
 		Test if buildImage works normally for GiveAway with empty text
 		:return: void
@@ -29,7 +29,7 @@ class TestLabelGenerator(unittest.TestCase):
 		lg = LabelGenerator()
 		lg.buildImage("give_away", "", outputfile=None)
 
-	def test_buildImageWrongLabel(self):
+	def test_buildImage_WrongLabel(self):
 		"""
 		Test if buildImage throws an error for unknown label type
 		:return: void
@@ -38,7 +38,7 @@ class TestLabelGenerator(unittest.TestCase):
 		with self.assertRaises(Exception):
 			lg.buildImage("beef", "Text", outputfile=None)
 
-	def test_buildImageUndocumentedWithEmptyText(self):
+	def test_buildImage_UndocumentedWithEmptyText(self):
 		"""
 		Test if buildImage throws an error for labels different to
 		GiveAway and an empty text.

@@ -15,7 +15,7 @@ class TestCMDInterface(unittest.TestCase):
 	"""
 
 
-	def test_commandlineInterface(self):
+	def test_commandlineInterface_Normal(self):
 		"""
 		Test if commandlineInterface works without exception
 		:return: void
@@ -23,7 +23,7 @@ class TestCMDInterface(unittest.TestCase):
 		sys.argv = ["prog", "-l", "give_away", "-t","Test"]
 		commandlineInterface()
 
-	def test_commandlineInterfaceDifferentOrder(self):
+	def test_commandlineInterface_DifferentOrder(self):
 		"""
 		Test if commandlineInterface works without exception
 		:return: void
@@ -31,7 +31,7 @@ class TestCMDInterface(unittest.TestCase):
 		sys.argv = ["prog", "-t","Test", "-l", "give_away"]
 		commandlineInterface()
 
-	def test_commandlineInterfaceWithoutLabel(self):
+	def test_commandlineInterface_WithoutLabel(self):
 		"""
 		Test if commandlineInterface throws exception if no label is provided
 		:return: void
@@ -40,7 +40,7 @@ class TestCMDInterface(unittest.TestCase):
 		with self.assertRaises(Exception):
 			commandlineInterface()
 
-	def test_commandlineInterfaceWithoutText(self):
+	def test_commandlineInterface_WithoutText(self):
 		"""
 		Test if commandlineInterface works if no text is provided
 		:return: void
@@ -48,7 +48,7 @@ class TestCMDInterface(unittest.TestCase):
 		sys.argv = ["prog", "-l", "public"]
 		commandlineInterface()
 
-	def test_commandlineInterfaceWithoutUnknownLabel(self):
+	def test_commandlineInterface_WithoutUnknownLabel(self):
 		"""
 		Test if commandlineInterface throws exception if label is unknown
 		:return: void
