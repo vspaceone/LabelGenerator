@@ -56,8 +56,8 @@ pipeline {
             }
         }
         stage('Send release webhooks') {
-            when {
-                when { buildingTag() }
+            expression {
+                env.TAG_NAME != null
             }
             steps {
                 sh "curl $RELEASE_STAGE_WEBHOOK"
