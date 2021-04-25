@@ -19,7 +19,7 @@ pipeline {
             }
         }
         stage('Push release') {
-            when { buildingTag() }
+            when { buildingTag }
             steps {
                 script {
                     docker.withRegistry( DOCKER_REGISTRY, DOCKER_CREDENTIALS ) {
