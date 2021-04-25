@@ -19,8 +19,10 @@ pipeline {
             }
         }
         stage('Push release') {
-            expression {
-                env.TAG_NAME != null
+            when {
+                expression {
+                    env.TAG_NAME != null
+                }
             }
             steps {
                 script {
@@ -56,8 +58,10 @@ pipeline {
             }
         }
         stage('Send release webhooks') {
-            expression {
-                env.TAG_NAME != null
+            when {
+                expression {
+                    env.TAG_NAME != null
+                }
             }
             steps {
                 sh "curl $RELEASE_STAGE_WEBHOOK"
