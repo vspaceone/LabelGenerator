@@ -1,7 +1,7 @@
 [![Build Status](https://jenkins.vspace.one/buildStatus/icon?job=vspaceone%2FLabelGenerator%2Fmaster)](https://jenkins.vspace.one/job/vspaceone/job/LabelGenerator/job/master/)
 [![Docker Image](https://badgen.net/badge/image/available/green?icon=docker)](https://packages.vspace.one/#browse/search/docker=attributes.docker.imageName%3Dlabelgenerator)
 # vspace.one e.V. LabelGenerator
-The LabelGenerator is a simple webapp, build with Flask. It serves png and jpeg image of our labels with dynamic strings on it. You can choose any name/string just via the path to the image. Find a running instance here: [labelgenerator.vspace.one](labelgenerator.vspace.one). 
+The LabelGenerator is a simple webapp, build with Flask. It serves png and jpeg image of our labels with dynamic strings on it. You can choose any name/string just via the path to the image. Find a running instance here: [https://labelgenerator.vspace.one/](https://labelgenerator.vspace.one/). Or the development branch here: [https://dev.labelgenerator.vspace.one/](https://dev.labelgenerator.vspace.one/).
 
 ## API Access
 Make requests to 
