@@ -41,10 +41,10 @@ class TestServer(unittest.TestCase):
 		with self.assertRaises(Exception):
 			startServer()
 
-	def test_startServer_IpLocalhost(self):
-		sys.argv = ["prog", "-i", "localhost"]
-		with self.assertRaises(Exception):
-			startServer()
+	#def test_startServer_IpLocalhost(self):
+	#	sys.argv = ["prog", "-i", "localhost"]
+	#	with self.assertRaises(Exception):
+	#		startServer()
 
 	def test_startServer_DebugStr(self):
 		sys.argv = ["prog", "-d", "localhost"]
