@@ -47,7 +47,6 @@ def generate(label,text,fileformat):
 @app.route('/<label>/<text>.png', methods=['GET'])
 @cache.cached()
 def serverPNG(label,text):
-    print("Regenerate!")
     return generate(label,text,"png")
 
 @app.route('/<label>/.png', methods=['GET'])
