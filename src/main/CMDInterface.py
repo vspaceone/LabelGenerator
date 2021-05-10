@@ -28,7 +28,7 @@ def commandlineInterface():
             label = opt[1]
         elif opt[0] == "-v":
             printVersions()
-            exit(0)
+            return
         elif opt[0] == "-h":
             print("""This is a tool to generate vspace.one e.V. labels with the names of the owners on them.
                 \nPlease use the following options:
@@ -38,7 +38,7 @@ def commandlineInterface():
                 -h: Help
                 -v: Print version
                 """)
-            exit(0)
+            return
     
     # validating inputs
     if label is None:
