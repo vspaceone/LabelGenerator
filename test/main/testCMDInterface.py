@@ -13,7 +13,21 @@ class TestCMDInterface(unittest.TestCase):
 	"""
 	TestHelper: Test class for Helper file
 	"""
+	def test_commandlineInterface_Version(self):
+		"""
+		Test if commandlineInterface works without exception
+		:return: void
+		"""
+		sys.argv = ["prog", "-v"]
+		commandlineInterface()
 
+	def test_commandlineInterface_Help(self):
+		"""
+		Test if commandlineInterface works without exception
+		:return: void
+		"""
+		sys.argv = ["prog", "-h"]
+		commandlineInterface()
 
 	def test_commandlineInterface_Normal(self):
 		"""
@@ -21,6 +35,14 @@ class TestCMDInterface(unittest.TestCase):
 		:return: void
 		"""
 		sys.argv = ["prog", "-l", "give_away", "-t","Test"]
+		commandlineInterface()
+
+	def test_commandlineInterface_NormalWithOutput(self):
+		"""
+		Test if commandlineInterface works without exception
+		:return: void
+		"""
+		sys.argv = ["prog", "-l", "give_away", "-t","Test", "-o", "delme.png"]
 		commandlineInterface()
 
 	def test_commandlineInterface_DifferentOrder(self):
