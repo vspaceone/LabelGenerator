@@ -2,19 +2,18 @@
 # Author:    Maximilian Noppel
 # Date:      April 2021
 
-import base64
+
 import getopt
 import sys
+import os
+import pathlib
 
 import flask
 from flask_caching import Cache
 import cv2
 
-from labelGenerator import buildImage
-from labelGenerator import POSSIBLE_LABELS
-
-from helper import getVersion
-
+from LabelGenerator import LabelGenerator
+from Helper import getVersion
 
 
 
@@ -28,22 +27,20 @@ cache = Cache(config={
 
 cache.init_app(app)
 
-
-
 def generate(label,text,fileformat):
-
+    lg = LabelGenerator()
     fileformats = ["png","jpeg"]
     if fileformat not in fileformats:
         raise Exception("Unknown fileformat ",fileformat)
     
     # validate inputs
-    if label not in POSSIBLE_LABELS:
+    if label not in lg.POSSIBLE_LABELS:
         raise Exception("Label "+label+" not found! Only given_away, instructed, public, owner_only and documented are possible labels!")
         
     # generate image
-    img = buildImage(label,text)
+    img = lg.buildImage(label,text)
     if img is None:
-        print("Image is none!")
+        raise Exception("Image is none!")
 
     # return image png
     retval, buffer = cv2.imencode("."+fileformat, img)
@@ -54,7 +51,6 @@ def generate(label,text,fileformat):
 @app.route('/<label>/<text>.png', methods=['GET'])
 @cache.cached()
 def serverPNG(label,text):
-    print("Regenerate!")
     return generate(label,text,"png")
 
 @app.route('/<label>/.png', methods=['GET'])
@@ -78,7 +74,7 @@ def serverIndex():
     resp.headers["Content-type"] = "text/html; charset=utf-8"
     return resp
 
-if __name__ == '__main__':
+def startServer():
     argv = sys.argv[1:]
     opts, args = getopt.getopt(argv, 'vhp:i:d:')
 
@@ -86,7 +82,6 @@ if __name__ == '__main__':
     port = 5007
     ip = "0.0.0.0"
     debug = False
-    print(opts)
 
     for opt in opts:
         if opt[0] == "-i":
@@ -95,9 +90,12 @@ if __name__ == '__main__':
             port = int(opt[1])
         elif opt[0] == "-d":
             debug = int(opt[1])
-        
+
     print("Running on")
     print("Host: ",ip)
     print("Port: ",port)
 
     app.run(debug=debug,host=ip,port=port)
+
+if __name__ == '__main__':
+    startServer()

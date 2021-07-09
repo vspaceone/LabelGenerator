@@ -11,4 +11,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 5007
 
-CMD [ "python", "src/main/server.py" ]
+CMD [ "python", "src/Server.py" ]
