@@ -11,7 +11,6 @@ MarkupSafe==2.0.1
 numpy==1.21.0
 opencv-python==4.5.2.54
 packaging==21.0
-pkg-resources==0.0.0
 pluggy==0.13.1
 py==1.10.0
 pyparsing==2.4.7
