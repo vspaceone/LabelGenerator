@@ -1,0 +1,17 @@
+FROM python:3-slim
+
+WORKDIR /usr/src/app
+
+RUN apt-get update && apt-get install -y python3-opencv
+
+COPY . .
+RUN pip install --no-cache-dir -r requirements.txt
+
+CMD [ "python", "test/AllXUnit.py" ]
+
+# The junit file results.xml is generated at /usr/src/app/results.xml
+# Load it from the container
+
+
+# Sleep to keep the container running
+CMD [ "sleep", "30m" ]

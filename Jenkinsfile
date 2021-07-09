@@ -18,6 +18,11 @@ pipeline {
                 }
             }
         }
+        stage('Test') {
+            steps {
+
+            }
+        }
         stage('Push release') {
             when {
                 expression {
