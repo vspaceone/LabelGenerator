@@ -29,7 +29,7 @@ class LabelGenerator():
         from pathlib import Path
         here = Path(__file__).parent.resolve()
 
-        labelpath = os.path.abspath(os.path.join(here,"..","..","labels",label+".png"))
+        labelpath = os.path.abspath(os.path.join(here,"..","labels",label+".png"))
         # read in image
         img = cv2.imread(labelpath)
         if img is None:

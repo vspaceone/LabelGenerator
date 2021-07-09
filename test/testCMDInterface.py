@@ -6,7 +6,7 @@ import unittest
 import argparse
 import sys
 
-from src.main.CMDInterface import *
+from CMDInterface import *
 
 
 class TestCMDInterface(unittest.TestCase):

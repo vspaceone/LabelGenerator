@@ -4,7 +4,7 @@
 
 import unittest
 
-from src.main.LabelGenerator import LabelGenerator
+from LabelGenerator import LabelGenerator
 
 
 class TestLabelGenerator(unittest.TestCase):

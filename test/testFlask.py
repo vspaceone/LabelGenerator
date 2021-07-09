@@ -6,7 +6,7 @@ import unittest
 
 import flask_unittest
 
-from src.main.Server import app
+from Server import app
 
 
 class TestFlask(flask_unittest.ClientTestCase):

@@ -4,7 +4,7 @@
 
 import unittest
 
-from src.main.Server import *
+from Server import *
 
 
 class TestServer(unittest.TestCase):
