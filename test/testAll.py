@@ -3,12 +3,18 @@
 # Date:      April 2021
 
 import unittest
+import os
 
-from test.main.testLabelGenerator import *
-from test.main.testHelper import *
-from test.main.testCMDInterface import *
-from test.main.testServer import *
+import context
 
+from testLabelGenerator import *
+from testHelper import *
+from testCMDInterface import *
+from testServer import *
+from testFlask import *
+
+
+os.chdir("..")
 
 class TestAll(unittest.TestCase):
 	pass

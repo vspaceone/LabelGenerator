@@ -4,7 +4,7 @@
 
 import unittest
 
-from src.main.LabelGenerator import LabelGenerator
+from LabelGenerator import LabelGenerator
 
 
 class TestLabelGenerator(unittest.TestCase):
@@ -28,6 +28,14 @@ class TestLabelGenerator(unittest.TestCase):
 		"""
 		lg = LabelGenerator()
 		lg.buildImage("give_away", "", outputfile=None)
+
+	def test_buildImage_LongText(self):
+		"""
+		Test if buildImage works when called normally
+		:return: void
+		"""
+		lg = LabelGenerator()
+		lg.buildImage("give_away", "TextTextTextTextTextTextText", outputfile=None)
 
 	def test_buildImage_WrongLabel(self):
 		"""

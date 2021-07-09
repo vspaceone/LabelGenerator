@@ -4,7 +4,7 @@
 
 import unittest
 
-from src.main.Helper import *
+from Helper import *
 
 
 class TestHelper(unittest.TestCase):
