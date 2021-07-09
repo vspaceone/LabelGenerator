@@ -5,8 +5,8 @@
 import getopt
 import sys
 
-from src.main.LabelGenerator import LabelGenerator
-from src.main.Helper import printVersions
+from LabelGenerator import LabelGenerator
+from Helper import printVersions
 
 def commandlineInterface():
     lg = LabelGenerator()
@@ -55,5 +55,3 @@ def commandlineInterface():
 
 if __name__ == "__main__":
     commandlineInterface()    
-else:
-    print("Please run this file as __main__!")

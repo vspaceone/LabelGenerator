@@ -5,13 +5,17 @@
 
 import getopt
 import sys
+import os
+import pathlib
 
 import flask
 from flask_caching import Cache
 import cv2
 
-from src.main.LabelGenerator import LabelGenerator
-from src.main.Helper import getVersion
+from LabelGenerator import LabelGenerator
+from Helper import getVersion
+
+
 
 app = flask.Flask(__name__)
 cache = Cache(config={

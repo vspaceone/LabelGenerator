@@ -26,8 +26,10 @@ class LabelGenerator():
         if label not in self.POSSIBLE_LABELS:
             raise Exception("Label "+label+" unknown!")
 
-        labelpath = os.path.join("labels",label+".png")
+        from pathlib import Path
+        here = Path(__file__).parent.resolve()
 
+        labelpath = os.path.abspath(os.path.join(here,"..","..","labels",label+".png"))
         # read in image
         img = cv2.imread(labelpath)
         if img is None:
