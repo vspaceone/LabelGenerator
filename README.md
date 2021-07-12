@@ -57,7 +57,7 @@ docker run -d -p 5007:5007 labelgenerator
 ```
 
 ## Contribute
-We use [gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) for the development. So please use the branch names `develop`, `featureX`, ... and use PullRequests for your contributions. 
+We use [gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) for the development. So please use the branch names `develop`, `feature/`, ... and use PullRequests for your contributions. 
 
 ## Licence
 Please find the licence here [licence](LICENCE.md).
