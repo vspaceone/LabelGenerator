@@ -35,7 +35,7 @@ def generate(label,text,fileformat):
     
     # validate inputs
     if label not in lg.POSSIBLE_LABELS:
-        raise Exception("Label "+label+" not found! Only given_away, instructed, public, owner_only and documented are possible labels!")
+        raise Exception("Label "+label+" not found! Only given_away, instructed, public, owner_only, documented, hackable and not_applicable are possible labels!")
         
     # generate image
     img = lg.buildImage(label,text)
