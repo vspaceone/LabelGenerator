@@ -14,7 +14,9 @@ class LabelGenerator():
         "instructed",
         "documented",
         "public",
-        "give_away"
+        "give_away",
+        "not_applicable",
+        "hackable"
     ]
 
     def __init__(self):
