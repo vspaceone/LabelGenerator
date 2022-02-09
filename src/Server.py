@@ -70,7 +70,8 @@ def serverJPEGEmpty(label):
 
 @app.route('/', methods=['GET'])
 def serverIndex():
-    resp = flask.make_response(flask.render_template('index.html', version=getVersion()), 200)
+    lg = LabelGenerator()
+    resp = flask.make_response(flask.render_template('index.html', version=getVersion(), labels=lg.POSSIBLE_LABELS), 200)
     resp.headers["Content-type"] = "text/html; charset=utf-8"
     return resp
 
